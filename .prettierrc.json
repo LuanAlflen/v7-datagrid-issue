@@ -1,0 +1,11 @@
+{
+    "useTabs": false,
+    "tabWidth": 4,
+    "endOfLine":"auto",
+    "singleQuote": false,
+    "printWidth": 80,
+    "trailingComma": "es5",
+    "importOrder": ["<THIRD_PARTY_MODULES>", "^@material-ui/(.*)$", "^@mui/(.*)$", "^@", "^[./]"],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}
