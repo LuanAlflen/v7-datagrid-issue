@@ -19,6 +19,17 @@ function App() {
         { label: "french", code: "FR" },
     ];
 
+    const formatNumber = (value) => {
+        if (language?.code === "DE") {
+            return value.toLocaleString("de-DE");
+        } else if (language?.code === "EN") {
+            return value.toLocaleString("en-US");
+        } else if (language?.code === "FR") {
+            return value.toLocaleString("fr-FR");
+        }
+        return value;
+    };
+
     const initialRows = [
         {
             id: 1,
@@ -47,8 +58,35 @@ function App() {
         {
             field: "price",
             headerName: t("price"),
-            type: "number",
             width: 120,
+            valueFormatter: (value) => {
+                if (value == null) return "";
+                return formatNumber(value);
+            },
+            renderEditCell: (params) => {
+                const { id, field, value, api } = params;
+                const initialValue = formatNumber(value);
+
+                const handleChange = (event) => {
+                    api.setEditCellValue({
+                        id,
+                        field,
+                        value: event.target.value,
+                    });
+                };
+
+                return (
+                    <TextField
+                        value={initialValue}
+                        onChange={handleChange}
+                        inputProps={{
+                            style: { textAlign: "right" },
+                            inputMode: "decimal",
+                            pattern: "[0-9.,]*",
+                        }}
+                    />
+                );
+            },
             editable: true,
         },
     ];

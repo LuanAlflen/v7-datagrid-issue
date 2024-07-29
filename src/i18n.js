@@ -14,7 +14,7 @@ const resources = {
             german: "German",
             language: "Language",
             "car insurance": "Car insurance",
-            rent: "rent",
+            rent: "Rent",
         },
     },
     fr: {
